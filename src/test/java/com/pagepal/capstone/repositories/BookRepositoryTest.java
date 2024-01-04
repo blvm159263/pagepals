@@ -48,4 +48,19 @@ public class BookRepositoryTest {
         assertNotNull(result);
         assertTrue(result.getContent().isEmpty());
     }
+
+    @Test
+    public void canSaveBook() {
+        Book book = new Book();
+        book.setId(UUID.randomUUID());
+        book.setTitle("test");
+        book.setAuthor("test");
+        book.setCreatedAt(null);
+        book.setStatus(Status.ACTIVE);
+
+        bookRepository.save(book);
+        Page<Book> result = bookRepository.findByTitleContainingIgnoreCase("test", PageRequest.of(0, 10));
+        assertNotNull(result);
+        assertFalse(result.getContent().isEmpty());
+    }
 }

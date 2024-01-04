@@ -1,6 +1,7 @@
 package com.pagepal.capstone.mappers;
 
 import com.pagepal.capstone.dtos.book.BookDto;
+import com.pagepal.capstone.dtos.book.WriteBookDto;
 import com.pagepal.capstone.entities.postgre.Book;
 import com.pagepal.capstone.entities.postgre.Category;
 import org.mapstruct.Mapper;
@@ -20,6 +21,8 @@ public interface BookMapper {
     @Mapping(target = "category", source = "category.id", qualifiedByName = "toEntityWithCategory")
     Book toEntity(BookDto bookDto);
 
+    @Mapping(target = "category", source = "categoryId", qualifiedByName = "toEntityWithCategory")
+    Book createBook(WriteBookDto bookDTO);
     @Named("toEntityWithCategory")
     default Category toEntityWithCategory(UUID id) {
         Category category = new Category();

@@ -1,7 +1,9 @@
 package com.pagepal.capstone.services.impl;
 
 import com.pagepal.capstone.dtos.book.BookDto;
+import com.pagepal.capstone.dtos.book.WriteBookDto;
 import com.pagepal.capstone.entities.postgre.Book;
+import com.pagepal.capstone.enums.Status;
 import com.pagepal.capstone.mappers.BookMapper;
 import com.pagepal.capstone.repositories.postgre.BookRepository;
 import com.pagepal.capstone.services.BookService;
@@ -43,5 +45,13 @@ public class BookServiceImpl implements BookService {
             return bookRepository.findByTitleContainingIgnoreCase(search, pageable).map(BookMapper.INSTANCE::toDto).toList();
         else
             return bookRepository.findByTitleContainsIgnoreCaseAndAuthor(search, filter, pageable).map(BookMapper.INSTANCE::toDto).toList();
+    }
+
+    @Override
+    public BookDto createBook(WriteBookDto bookDto) {
+        Book book = BookMapper.INSTANCE.createBook(bookDto);
+        book.setId(null);
+        book.setStatus(Status.ACTIVE);
+        return BookMapper.INSTANCE.toDto(bookRepository.save(book));
     }
 }

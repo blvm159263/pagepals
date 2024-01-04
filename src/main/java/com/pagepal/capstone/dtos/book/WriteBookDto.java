@@ -12,7 +12,6 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 public class WriteBookDto {
-    private UUID id;
     private String title;
     private String longTitle;
     private String author;
