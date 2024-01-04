@@ -1,3 +1,13 @@
+type Query {
+    getListBook(query: searchBook): [Book]
+}
+
+#extend type Mutation {
+#    createBook(book: BookInput): Book
+#    updateBook(id: ID!, book: BookInput): Book
+#    deleteBook(id: ID!): Book
+#}
+
 type Book {
     id: ID!
     title: String
@@ -10,5 +20,22 @@ type Book {
     imageUrl: String
     edition: String
     status: Status
+    createdAt: String
     category: Category
 }
+
+input searchBook {
+    search: String
+    sort: String
+    filter: String
+    page: Int
+    pageSize: Int
+}
+
+#input BookInput {
+#    title: String
+#    longTitle: String
+#}
+
+
+

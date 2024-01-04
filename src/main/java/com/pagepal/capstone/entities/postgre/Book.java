@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Where;
 
+import java.util.Date;
 import java.util.UUID;
 
 @Data
@@ -53,6 +54,9 @@ public class Book {
 
     @Column(name = "edition")
     private String edition;
+
+    @Column(name = "created_at")
+    private Date createdAt;
 
     @Column(name = "status")
     @Enumerated(EnumType.STRING)
