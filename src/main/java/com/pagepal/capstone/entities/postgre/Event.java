@@ -6,6 +6,7 @@ import com.pagepal.capstone.enums.EventStateEnum;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Where;
 
 import java.util.Date;
 import java.util.List;
@@ -18,6 +19,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @Entity
 @Table(name = "EVENT")
+@Where(clause = "state = 'ACTIVE'")
 public class Event {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
