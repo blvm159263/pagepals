@@ -12,6 +12,7 @@ type Service {
     reader: Reader
     book: Book
     serviceType: ServiceType
+    bookings: [Booking]
 }
 
 input QueryInput {

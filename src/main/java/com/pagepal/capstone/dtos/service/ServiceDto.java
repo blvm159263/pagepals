@@ -1,6 +1,7 @@
 package com.pagepal.capstone.dtos.service;
 
 import com.pagepal.capstone.entities.postgre.Book;
+import com.pagepal.capstone.entities.postgre.Booking;
 import com.pagepal.capstone.entities.postgre.Reader;
 import com.pagepal.capstone.entities.postgre.ServiceType;
 import com.pagepal.capstone.enums.Status;
@@ -9,6 +10,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
 import java.util.UUID;
 
 @Setter
@@ -29,4 +31,5 @@ public class ServiceDto {
     private Reader reader;
     private Book book;
     private ServiceType serviceType;
+    private List<Booking> bookings;
 }
